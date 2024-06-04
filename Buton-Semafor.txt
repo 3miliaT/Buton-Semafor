@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buton Semafor</title>
+    <title>Traffic Light Button</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .btn-red {
@@ -22,24 +22,33 @@
 </head>
 <body>
     <div class="container text-center mt-5">
-        <button id="trafficButton" class="btn btn-red">Apasă-mă</button>
+        <button id="trafficButton" class="btn btn-red">Press me</button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const button = document.getElementById('trafficButton');
-            const colors = ['btn-red', 'btn-yellow', 'btn-green'];
-            let currentColorIndex = 0;
+            // Get the reference to the button
+            var button = document.getElementById('trafficButton');
+            // Array of color classes
+            var colors = ['btn-red', 'btn-yellow', 'btn-green'];
+            // Index to track the current color
+            var currentColorIndex = 0;
 
-            const changeColor = () => {
+            // Function to change the button color
+            function changeColor() {
+                // Remove the current color class
                 button.classList.remove(colors[currentColorIndex]);
+                // Update the color index
                 currentColorIndex = (currentColorIndex + 1) % colors.length;
+                // Add the new color class
                 button.classList.add(colors[currentColorIndex]);
-            };
+            }
 
+            // Add click event listener to the button
             button.addEventListener('click', changeColor);
 
-            setInterval(changeColor, 10000); // Schimbă culoarea din 10 în 10 secunde
+            // Change the color every 10 seconds
+            setInterval(changeColor, 10000);
         });
     </script>
 </body>
