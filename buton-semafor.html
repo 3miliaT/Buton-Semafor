@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buton Semafor</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-red {
+            background-color: red;
+            color: white;
+        }
+        .btn-yellow {
+            background-color: yellow;
+            color: black;
+        }
+        .btn-green {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <button id="trafficButton" class="btn btn-red">Apasă-mă</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById('trafficButton');
+            const colors = ['btn-red', 'btn-yellow', 'btn-green'];
+            let currentColorIndex = 0;
+
+            const changeColor = () => {
+                button.classList.remove(colors[currentColorIndex]);
+                currentColorIndex = (currentColorIndex + 1) % colors.length;
+                button.classList.add(colors[currentColorIndex]);
+            };
+
+            button.addEventListener('click', changeColor);
+
+            setInterval(changeColor, 10000); // Schimbă culoarea din 10 în 10 secunde
+        });
+    </script>
+</body>
+</html>
